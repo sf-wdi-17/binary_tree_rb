@@ -1,4 +1,4 @@
-module BreadthFirstSearch
+module BinTreeBreadthFirstSearchHelpers
 
 	class Node
 		attr_reader :bin_tree
@@ -32,13 +32,11 @@ module BreadthFirstSearch
 
 		def dequeue
 			if self.empty?
-				p "is empty"
-				return nil # if queue empty, we can't dequeue anything
-			end
+							return nil # if queue empty, we can't dequeue anything
+						end
 
 			# special case, only 1 node left
 			if @size == 1
-				p "1 left"
 				node = @output
 				@input = @output = nil
 				@size = 0 # set @size to 0 now
@@ -47,8 +45,8 @@ module BreadthFirstSearch
 
 			# Queue won't be emptied by this dequeue op, so proceed
 			current = @input
-			while(@input.next.next)
-				current = @input
+			while(current.next.next != nil)
+				current = current.next
 			end
 
 			node = current.next
